@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  jira:
+    image: atlassian/jira-software:latest
+    container_name: jira
+    ports:
+      - "8080:8080"
+    networks:
+      - jiranet
+    environment:
+      - JVM_MINIMUM_MEMORY=1024m
+      - JVM_MAXIMUM_MEMORY=4096m
+
+networks:
+  jiranet:
+    driver: bridge

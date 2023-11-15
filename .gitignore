@@ -1,0 +1,6 @@
+.env
+config/
+inputs/
+client/app.js
+node_modules/
+.history/
