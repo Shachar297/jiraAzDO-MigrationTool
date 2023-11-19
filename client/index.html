@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Configuration Page</title>
+  <title>Migration</title>
   <!-- Add Bootstrap CSS link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./sources/migration.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./sources/migration.png" type="image/x-icon">
 </head>
 <body>
+
+
 
 <div class="container mt-5">
   <div class="row">
     <!-- Left Form -->
     <div class="col-md-6">
       <form id="leftForm">
-        <h2>Configure Jira Instance</h2>
+        <h2>Configure Jira Instance</h2> <img src="./sources/jira-image.webp" width=50 height=50>
         <div class="form-group">
           <label for="leftBaseUrl">Base Url:</label>
-          <input placeholder="https://my-jira-site.com" type="text" class="form-control" id="leftBaseUrl" required>
+          <input value="http://localhost:8080" placeholder="https://my-jira-site.com" type="text" class="form-control" id="leftBaseUrl" required>
         </div>
 
         <div class="form-group">
           <label for="leftProject">Project Key:</label>
-          <input type="text" class="form-control" id="leftProject" required>
+          <input value="MD" type="text" class="form-control" id="leftProject" required>
         </div>
         <div class="form-group">
             <label for="leftToken">Token:</label>
@@ -36,7 +40,7 @@
     <!-- Right Form -->
     <div class="col-md-6">
       <form id="rightForm" class="disabled-form">
-        <h2>Configure Azure Devops Instance</h2>
+        <h2>Configure Azure Devops Instance</h2> <img src="./sources/azure_devops-1.png" width=75 height=50>
         <div class="form-group">
           <label for="rightBaseUrl">Base Url:</label>
           <input value="https://dev.azure.com/" type="text" class="form-control" id="rightBaseUrl" disabled>
@@ -44,15 +48,15 @@
 
         <div class="form-group">
           <label for="rightOrganization">Organization:</label>
-          <input type="text" class="form-control" id="rightOrganization" disabled>
+          <input value="Shacharovadia" type="text" class="form-control" id="rightOrganization" disabled>
         </div>
         <div class="form-group">
           <label for="rightProject">Project:</label>
-          <input type="text" class="form-control" id="rightProject" disabled>
+          <input value="Migration Demo" type="text" class="form-control" id="rightProject" disabled>
         </div>
         <div class="form-group">
             <label for="rightToken">Token:</label>
-            <input type="text" class="form-control" id="rightToken" disabled>
+            <input value="ns7x2i2xtzrs5oe7rjologtnipwhlwhyk5v4o6lfzvtomuzoryhq" type="password" class="form-control" id="rightToken" disabled>
           </div>
         <button type="button" class="btn btn-primary" id="rightConfigureBtn" disabled>Configure</button>
       </form>
@@ -68,10 +72,12 @@
     </div>
   </div>
 
-  <div class="container-logs container-fluid mt-4 w-100" id="container-logs" style="word-wrap: break-word;">
+  <div class="container-logs container-fluid mt-4 w-125" id="container-logs" style="word-wrap: break-word;">
     
     
   </div>
+
+  <div class="migration-counter" id="migration-counter"></div>
 </div>
 
 
