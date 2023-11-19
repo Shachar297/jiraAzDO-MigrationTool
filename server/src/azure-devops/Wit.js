@@ -32,8 +32,6 @@ async function createWorkItem(jiraIssue) {
         return res.data
     } catch (error) {
         console.log(error)
-        console.log(`${api} \n ${await genereateWitData(jiraIssue)}`)
-
     }
 
 
@@ -138,7 +136,7 @@ async function genereateWitData(jiraIssue) {
 
     if (isIssueHasSprint(jiraIssue)) {
         let originalSprintName = config.azureDevops.project + '\\\\' + jiraIssue.fields.customfield_10108[0].split("name=")[1].split(",")[0];
-        console.log(originalSprintName);
+        
         data.push({
             "op": "add",
             "path": "/fields/System.IterationPath",

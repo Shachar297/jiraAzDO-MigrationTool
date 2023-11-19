@@ -1,20 +1,25 @@
 .container-logs {
-    background-color: rgb(176, 172, 172);
+    background-color: rgba(228, 222, 222, 0.319);
     padding: 2vh;
     max-height: 30vh;
     overflow: auto;
     width: 135% !important;
     margin-left: -10vw !important;
+    box-shadow: 
+        rgba(164, 218, 235, 0.5) -1vh -1vh 2vh 0.2vh;
 }
 
-* * {
-    font-family: 'Inconsolata', serif;
+* *, html, body, .container {
+    font-family: 'Dosis', sans-serif;
+font-family: 'Inconsolata', monospace;
+font-family: 'Lora', serif;
+font-family: 'Raleway', sans-serif;
 }
 
 .migration-counter::before {
     position: absolute;
-    box-shadow: rgb(76, 219, 97) 0.4vh 0.5vh 1vh 0vh,
-        rgb(49, 135, 178) -0.2vh -0.2vh 0.5vh 0vh;
+    box-shadow: rgb(216, 35, 35) 0.4vh 0.5vh 1vh 0vh,
+        rgb(0, 0, 0) -0.2vh -0.2vh 0.5vh 0vh;
 
     width: 12vw;
     height: 8vh;
@@ -31,10 +36,7 @@
 
 .migration-counter {
     position: absolute;
-    box-shadow: rgb(76, 219, 97) 0.4vh 0.5vh 1vh 0vh,
-        rgb(49, 135, 178) -0.2vh -0.2vh 0.5vh 0vh;
-
-    width: 12vw;
+    width: 15vw;
     height: 8vh;
     padding-top: 3vh;
     padding-bottom: 8vh;
@@ -45,25 +47,92 @@
     justify-content: center !important;
     text-align: center;
     font-size: 1.2rem;
-    animation: spin 4s linear infinite;
+}
+
+
+.migration-expl {
+    position: absolute;
+    width: 15vw;
+    height: 22vh;
+    left: 3.5vw;
+    top: 18vh;
+}
+.migration-expl .card-header{
+    letter-spacing: 3px;
+    height: 75%;
+}
+.migration-expl > div {
+    padding: 0;
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 @keyframes spin {
     0% {
-        box-shadow: rgb(76, 219, 97) 0.4vh 0.5vh 1vh 0vh,
-        rgb(49, 135, 178) -0.2vh -0.2vh 0.5vh 0vh;
-        transform: scale(1,1);
+        box-shadow: rgba(198, 219, 76, 0.537) 0.4vh 0.5vh 1vh 0vh,
+            rgba(49, 135, 178, 0.512) -0.2vh -0.2vh 0.5vh 0vh;
+        transition: all 0.2s;
     }
+
     50% {
         box-shadow:
-        rgb(49, 135, 178) -0.2vh -0.2vh 0.5vh 0vh,
-        rgb(76, 219, 97) 0.4vh 0.5vh 1vh 0vh;
-        transform: scale(1.1,1.1);
+            rgba(49, 135, 178, 0.646) -0.2vh -0.2vh 0.5vh 0vh,
+            rgba(226, 5, 193, 0.445)0.4vh 0.5vh 1vh 0vh;
+        transition: all 0.2s;
+
     }
+
     100% {
         box-shadow:
-        rgb(8, 173, 255) -0.2vh -0.2vh 0.5vh 0vh,
-        rgb(138, 218, 150) 0.4vh 0.5vh 1vh 0vh;
-        transform: scale(1,1);
+            rgb(8, 173, 255) -0.2vh -0.2vh 0.5vh 0vh,
+            rgb(138, 218, 150) 0.4vh 0.5vh 1vh 0vh;
+        transition: all 0.2s;
+
+    }
+}
+
+#azure-eye-icon {
+    position: absolute;
+    top: 41.2vh;
+    right: 2vw;
+}
+#jira-eye-icon {
+    position: absolute;
+    top: 32.2vh;
+    right: 2vw;
+}
+
+svg {
+    cursor: pointer;
+}
+
+svg:hover{
+    transform: scale(1.2,1.2);
+    transition: 0.5s;
+    color: green;
+}
+
+svg:not(:hover) {
+    transform: scale(1,1);
+    transition: 0.5s;
+}
+
+@media screen and (max-width: 1700px) {
+    .migration-expl {
+        display: none;
+    }
+    .migration-counter {
+        right: 25vw;
+        background-color: aliceblue;
+        height: 10vh;
+        width: 45vw;
+        align-items: center;
+        align-self: center;
+        text-align: center;
+        display: flex;
+        padding-top: 10vh;
+        padding-bottom: 15vh;
+        justify-content: center;
     }
 }
