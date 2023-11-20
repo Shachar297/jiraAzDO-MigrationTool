@@ -5,3 +5,4 @@ client/app.js
 node_modules/
 .history/
 client/sources
+client/
