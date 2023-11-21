@@ -69,6 +69,8 @@ async function getAllIssueComments(issueKey) {
     }
 }
 
+
+
 module.exports = {
     getAllJiraIssues,
     getParent,

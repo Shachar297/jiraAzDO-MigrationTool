@@ -144,7 +144,29 @@ async function genereateWitData(jiraIssue) {
         })
     }
 
+    if(isIssueHasLabels(jiraIssue)) {
+        let tags = jiraIssue.fields.labels.join(",");
+
+        data.push({
+            op: "add",
+            path: "/fields/System.Tags",
+            value: tags
+        })
+    }
+
+    if(isJiraIssueHasResolution(jiraIssue)) {
+        data.push({
+            op: "add",
+            path: "/fields/Microsoft.VSTS.Common.Resolution",
+            value: jiraIssue.fields.resolution.name
+        })
+    }
+
     return data;
+}
+
+function isJiraIssueHasResolution(jiraIssue) {
+    return jiraIssue.fields.resolution;
 }
 
 function isIssueHasSprint(jiraIssue) {
@@ -175,6 +197,9 @@ function setWorkItemType(jiraIssue) {
             break;
         case "Task":
             witType = "Task"
+            break;
+        case "Bug":
+            witType = "Bug"
             break;
         default:
             break;
@@ -284,7 +309,9 @@ function generateNewState(state) {
     return newState
 }
 
-
+function isIssueHasLabels(jiraIssue) {
+    return (jiraIssue.fields.labels && jiraIssue.fields.labels.length > 0);
+}
 
 module.exports = {
     createWorkItem,

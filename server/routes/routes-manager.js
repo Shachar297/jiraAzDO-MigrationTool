@@ -5,5 +5,7 @@ const
 
 
 router.post("/", migrationModule.handleMigration);
-
+router.get("", (req, res) => {
+    res.send(`Migration Manager is ready and listening on ${process.env.PORT}\n`)
+})
 module.exports = router;
