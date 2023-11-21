@@ -19,7 +19,8 @@ async function handleMigration(req, res) {
                 response = await azureDevopsModule.createWorkItem(jiraEpics[epic]),
                 workItemId = response.id,
                 comments = await jiraModule.getAllIssueComments(jiraEpics[epic].key),
-                issueStatus = jiraEpics[epic].fields.status.name
+                issueStatus = jiraEpics[epic].fields.status.name;
+                response.totalWorkItemsToMigrate = jiraEpics.length
 
             await handleCommentsMigration(comments, workItemId);
             if(issueStatus != "To Do") {
@@ -37,6 +38,7 @@ async function handleMigration(req, res) {
                 workItemId = response.id,
                 comments = await jiraModule.getAllIssueComments(issues[i].key),
                 issueStatus = issues[i].fields.status.name;
+                response.totalWorkItemsToMigrate = issues.length;
 
             await handleCommentsMigration(comments, workItemId);
 
