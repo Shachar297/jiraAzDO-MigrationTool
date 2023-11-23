@@ -1,0 +1,13 @@
+{
+    "jira": {
+        "baseUrl": "http://localhost:8080",
+        "token": "my-jira-token",
+        "project": "SOME-KEY"
+    },
+    "azureDevops": {
+        "baseUrl": "https://dev.azure.com",
+        "token": "my-azdo-token",
+        "project": "MYPROJECT",
+        "organization": "MYORG"
+    }
+}

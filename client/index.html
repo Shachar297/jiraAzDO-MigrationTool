@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migration</title>
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./sources/migration.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./sources/migration.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Migration Tool</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" download="env-client.json" href="../server/config/env-client.json">Download Configuration
+            File <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">Upload Configuration <input type="file" id="fileInput">
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" onclick="showConfiguration()">How to Configure?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="hideConfiguration()">Home</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+
+  <div id="markdownContainer" class="markdown"></div>
+
+
+  <div class="container migration-screen mt-5">
+    <div class="row">
+      <!-- Left Form -->
+      <div class="col-md-6">
+        <form id="leftForm" autocomplete="off">
+          <h2>Configure Jira Instance</h2> <img src="./sources/jira-image.webp" width=50 height=50>
+          <div class="form-group">
+            <label for="leftBaseUrl">Base Url:</label>
+            <input placeholder="https://my-jira-site.com" type="text" class="form-control" id="leftBaseUrl" required>
+
+          </div>
+
+          <div class="form-group">
+            <label for="leftProject">Project Key:</label>
+            <input type="text" class="form-control" id="leftProject" required name="leftProject" autocomplete="off"
+              value="">
+          </div>
+
+          <div class="form-group">
+            <label for="leftToken">Token:</label>
+            <input class="form-control" id="leftToken" required type="password" autocomplete="off" value="">
+            <span id="jira-eye-icon">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+              </svg>
+            </span>
+            <small> <a
+                href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"
+                target="_blank"> How to create an API token?</a> </small>
+          </div>
+          <button type="button" class="btn btn-primary" id="leftConfigureBtn">Configure</button>
+        </form>
+      </div>
+
+      <!-- Right Form -->
+      <div class="col-md-6">
+        <form id="rightForm" class="disabled-form">
+          <h2>Configure Azure Devops Instance</h2> <img src="./sources/azure_devops-1.png" width=75 height=50>
+          <div class="form-group">
+            <label for="rightBaseUrl">Base Url:</label>
+            <input type="text" class="form-control" id="rightBaseUrl" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="rightOrganization">Organization:</label>
+            <input type="text" class="form-control" id="rightOrganization" disabled>
+          </div>
+          <div class="form-group">
+            <label for="rightProject">Project:</label>
+            <input type="text" class="form-control" id="rightProject" disabled>
+          </div>
+          <div class="form-group">
+            <label for="rightToken">Token:</label>
+            <input type="password" class="form-control" id="rightToken" disabled>
+
+            <span id="azure-eye-icon">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+              </svg>
+            </span>
+            <small> <a
+                href="https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows"
+                target="_blank"> How to create an API Token? </a> </small>
+          </div>
+          <button type="button" class="btn btn-primary" id="rightConfigureBtn" disabled>Configure</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;" id="progressBar"></div>
+        </div>
+        <button type="button" class="btn btn-success mt-3" id="migrateBtn" disabled>Migrate</button>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar"
+            id="progressBarLogs"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-logs container-fluid mt-4 w-125" id="container-logs" style="word-wrap: break-word;">
+
+
+    </div>
+
+    <div class="migration-counter card-header" id="migration-counter">
+
+    </div>
+
+    <div class="card migration-expl" id="migration-expl">
+      <div class="card-header">
+        All Issues (Work items) will be migrated with their Parent Link (Epic), Links (Related issues)
+        Comments,
+        Attachments,
+        and jira fields.
+      </div>
+      <div class="card-body">
+        <small><b>Some configuration must be done manually to complete the migration successfully.</b></small>
+
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+  <!-- Add Bootstrap JS and Popper.js script tags -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+
+  <!-- Add your custom script -->
+  <script src="app.js"></script>
+
+</body>
+
+</html>
