@@ -136,7 +136,7 @@ async function genereateWitData(jiraIssue) {
 
     if (isIssueHasSprint(jiraIssue)) {
         let originalSprintName = config.azureDevops.project + '\\\\' + jiraIssue.fields.customfield_10108[0].split("name=")[1].split(",")[0];
-        
+
         data.push({
             "op": "add",
             "path": "/fields/System.IterationPath",
@@ -144,7 +144,7 @@ async function genereateWitData(jiraIssue) {
         })
     }
 
-    if(isIssueHasLabels(jiraIssue)) {
+    if (isIssueHasLabels(jiraIssue)) {
         let tags = jiraIssue.fields.labels.join(",");
 
         data.push({
@@ -154,7 +154,7 @@ async function genereateWitData(jiraIssue) {
         })
     }
 
-    if(isJiraIssueHasResolution(jiraIssue)) {
+    if (isJiraIssueHasResolution(jiraIssue)) {
         data.push({
             op: "add",
             path: "/fields/Microsoft.VSTS.Common.Resolution",
@@ -313,8 +313,83 @@ function isIssueHasLabels(jiraIssue) {
     return (jiraIssue.fields.labels && jiraIssue.fields.labels.length > 0);
 }
 
+// ----------------------------------------------------------------
+// This code blocks (all the below) related to the azure devops migration to jira.
+// ----------------------------------------------------------------
+
+async function getAllWorkItems() {
+    const token = `Basic ${Buffer.from(`:${config.azureDevops.token}`).toString('base64')}`;
+
+    const
+        apiUrl = `${config.azureDevops.baseUrl}/${config.azureDevops.organization}/${config.azureDevops.project}/_apis/wit/wiql?api-version=7.1`,
+        data = {
+            "query": `Select [System.Id] From WorkItems WHERE [System.TeamProject] = @project`
+        }
+
+    try {
+        const response = await axios({
+            method: "POST",
+            url: apiUrl,
+            headers: {
+                'Authorization': token
+            },
+            data: data
+        });
+
+        return response.data.workItems.length > 0 ? response.data.workItems : null;
+    } catch (error) {
+        console.error('Error fetching work items:', error);
+    }
+}
+
+async function getWorkItemById(workItemId) {
+    let
+        api = `${config.azureDevops.baseUrl}/${config.azureDevops.organization}/${config.azureDevops.project}/_apis/wit/workItems/${workItemId}`,
+        token = `Basic ${Buffer.from(`:${config.azureDevops.token}`).toString('base64')}`;;
+
+    try {
+        const response = await axios({
+            method: "GET",
+            url: api,
+            headers: {
+                "Authorization": token
+            }
+        });
+        return response.data;
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
+
+function workItemHasComments(workItem) {
+    return workItem.fields["System.CommentCount"] > 0
+}
+
+async function getWorkItemComments(workItemId) {
+    let
+    api = `${config.azureDevops.baseUrl}/${config.azureDevops.organization}/${config.azureDevops.project}/_apis/wit/workItems/${workItemId}/comments`,
+    token = `Basic ${Buffer.from(`:${config.azureDevops.token}`).toString('base64')}`;;
+
+try {
+    const response = await axios({
+        method: "GET",
+        url: api,
+        headers: {
+            "Authorization": token
+        }
+    });
+    return response.data;
+} catch (error) {
+    return Promise.reject(error);
+}
+}
+
 module.exports = {
     createWorkItem,
     addWorkItemComments,
-    changeWorkItemState
+    changeWorkItemState,
+    getAllWorkItems,
+    getWorkItemById,
+    workItemHasComments,
+    getWorkItemComments
 }

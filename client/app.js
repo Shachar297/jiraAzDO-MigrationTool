@@ -39,6 +39,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let migrationServerUrl = "http://localhost:8081/api/";
 
+
+    let migratingFromJira = true;
+
+    const migrationSourceBtn = document.getElementById("migrationSourceBtn");
+
+    migrationSourceBtn.addEventListener("click", () => {
+        migratingFromJira = !migratingFromJira;
+
+        migrationServerUrl = migratingFromJira ? "http://localhost:8081/api/" : "http://localhost:8081/api/azure/"
+        let message = migratingFromJira ? "Migrating from jira to Azure Devops" : "Migration from Azure Devops into Jira"
+
+        const migrationSourceInfoCard = document.getElementById("migrationSourceInfoCard");
+        migrationSourceInfoCard.innerHTML = message;
+
+        if(!migratingFromJira) {
+            document.querySelectorAll(".col-md-6").forEach(col => col.classList.add("switched"))
+        }else{
+            document.querySelectorAll(".col-md-6").forEach(col => col.classList.remove("switched"))
+        }
+
+    })
+
     azEyeIcon.addEventListener('click', function () {
         isAzureTokenVisible = !isAzureTokenVisible;
         rightTokenInput.type = isAzureTokenVisible ? 'text' : 'password'

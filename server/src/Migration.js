@@ -6,8 +6,32 @@ const
     azureDevopsWorkItemTypesModule = require("./azure-devops/WitType");
 
 
+async function handleMigrationFromAzDoToJira(req, res) {
+    setConfig(req);
 
-async function handleMigration(req, res) {
+    try {
+       let workItemsList = await azureDevopsModule.getAllWorkItems();
+       for(let i = 0; i < workItemsList.length; i++) {
+        let currentWorkItem = await azureDevopsModule.getWorkItemById(workItemsList[i].id);
+        let newJiraIssue = await jiraModule.createJiraIssue(currentWorkItem);
+        console.log(`Success ---> New Jira Issue ${newJiraIssue.key} Has been Migrated!`);
+        res.write(JSON.stringify(newJiraIssue));
+        if(azureDevopsModule.workItemHasComments(currentWorkItem)) {
+            let workItemComments = await azureDevopsModule.getWorkItemComments(currentWorkItem.id);
+            console.log(workItemComments)
+            for(let comment = 0; comment < workItemComments.comments.length; comment++) {
+                let commentAddedToIssue = jiraModule.addIssueComments(workItemComments.comments[comment].text, newJiraIssue.key)
+                console.log(`Comment added to issue ${newJiraIssue.key}`);
+            }
+        }   
+    }
+
+    } catch (error) {
+        return Promise.reject(error)
+    }
+}
+
+async function handleMigrationFromJiraToAzDO(req, res) {
 
     setConfig(req)
 
@@ -109,5 +133,6 @@ function setConfig(req) {
 }
 
 module.exports = {
-    handleMigration
+    handleMigrationFromJiraToAzDO,
+    handleMigrationFromAzDoToJira
 }

@@ -169,3 +169,28 @@ svg:not(:hover) {
 .markdown {
     display: none;
 }
+
+.migration-map{
+    position: absolute;
+    width: 16vw;
+    height: 18vh;
+    box-shadow:  rgba(49, 169, 229, 0.336) 0.2vh 0.5vh 0.1vh 0.11vh ;
+    left: 2.5vw;
+    top: 25vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.migration-map .card-footer button {
+    width: 100%;
+    
+}
+
+.col-md-6.switched:first-child{
+    order: 1 !important;
+    transition: all 1s;
+}
+.col-md-6:first-child{
+    order: 0 !important;
+    transition: all 1s;
+}
