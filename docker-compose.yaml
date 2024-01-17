@@ -12,6 +12,20 @@ services:
       - JVM_MINIMUM_MEMORY=1024m
       - JVM_MAXIMUM_MEMORY=4096m
 
+  migration-server:
+    image: shacharovadia/migration-server
+    container_name: migration-server
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+
+  migration-ui:
+    image: shacharovadia/migration-ui
+    container_name: migration-ui
+    ports:
+      - "8082:80"
+
 networks:
   jiranet:
     driver: bridge
