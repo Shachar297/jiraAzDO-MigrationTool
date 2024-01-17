@@ -21,6 +21,8 @@ services:
       - PORT=8081
 
   migration-ui:
+    depends_on: 
+      - migration-server
     image: shacharovadia/migration-ui
     container_name: migration-ui
     ports:
