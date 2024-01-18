@@ -1,0 +1,266 @@
+[
+    {
+        "Id": "bdde70bea83b8a07ec8f99f8c33e82d5725047531716617bedb78cf2ec59e24d",
+        "Created": "2024-01-17T08:25:07.306538545Z",
+        "Path": "/usr/bin/tini",
+        "Args": [
+            "--",
+            "/entrypoint.py"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 928675,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-01-17T08:25:07.808488004Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:f2e1203f443dd0126c8bde81bdb90bb3ac88f1908a64fee7ca10dd42a997c51f",
+        "ResolvConfPath": "/var/lib/docker/containers/bdde70bea83b8a07ec8f99f8c33e82d5725047531716617bedb78cf2ec59e24d/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/bdde70bea83b8a07ec8f99f8c33e82d5725047531716617bedb78cf2ec59e24d/hostname",
+        "HostsPath": "/var/lib/docker/containers/bdde70bea83b8a07ec8f99f8c33e82d5725047531716617bedb78cf2ec59e24d/hosts",
+        "LogPath": "/var/lib/docker/containers/bdde70bea83b8a07ec8f99f8c33e82d5725047531716617bedb78cf2ec59e24d/bdde70bea83b8a07ec8f99f8c33e82d5725047531716617bedb78cf2ec59e24d-json.log",
+        "Name": "/jira",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "87911ba1f989b5a333e75f9f264e2ed891e9b0886a95fe66203409f4d85cf7c4:/var/atlassian/application-data/jira:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "webinar_jiranet",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": [],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/8222aa60b82e8e5c5dd95c250241ad6bef1af80935a586d5092574ed73e6f1a3-init/diff:/var/lib/docker/overlay2/2ba9616670d9d1b6aa1cea6869d1ec4856e27183a3f6b328187325542655100c/diff:/var/lib/docker/overlay2/d28431ad2e0019993397d628d26f0723296360b56c66d77db147dc898113a81f/diff:/var/lib/docker/overlay2/8ee6ca3a47fa57857e638f07ce78aec32ab00e00a021a5076f5d745b3710c80a/diff:/var/lib/docker/overlay2/99c4b642d1329b508f04df0ca9a06fda11a2b5eb08a096010b165abfaa9f85aa/diff:/var/lib/docker/overlay2/e180e6579572b1a764d98d6c3694b4b75db38ee2df1ca558170ec26e1541cf03/diff:/var/lib/docker/overlay2/d3aa8ce28f4d50e0e8b1b2cd6984f6135131064005fce51492646e1628c48e41/diff:/var/lib/docker/overlay2/5241da977730939da4d3c6af397ea70606ed0b371206130988391acb6f4f09d2/diff:/var/lib/docker/overlay2/5afa08ec70344fc3eb217a1774fea3e513eeaaf8b4de391cd89ecce4335304df/diff:/var/lib/docker/overlay2/abeb22ed1936d4462bcf3e06658efdc6bbd6ba5a0f26c853b381b844b12367b1/diff:/var/lib/docker/overlay2/00c6fb8c84c56e27fbff427a5a598a3bb77c1962dbb37f4e3bf8c18d454cd0bb/diff:/var/lib/docker/overlay2/463d22545da66e562d56762587ca19abe01d3f2915580e7d9074c32ef816868b/diff",
+                "MergedDir": "/var/lib/docker/overlay2/8222aa60b82e8e5c5dd95c250241ad6bef1af80935a586d5092574ed73e6f1a3/merged",
+                "UpperDir": "/var/lib/docker/overlay2/8222aa60b82e8e5c5dd95c250241ad6bef1af80935a586d5092574ed73e6f1a3/diff",
+                "WorkDir": "/var/lib/docker/overlay2/8222aa60b82e8e5c5dd95c250241ad6bef1af80935a586d5092574ed73e6f1a3/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "87911ba1f989b5a333e75f9f264e2ed891e9b0886a95fe66203409f4d85cf7c4",
+                "Source": "/var/lib/docker/volumes/87911ba1f989b5a333e75f9f264e2ed891e9b0886a95fe66203409f4d85cf7c4/_data",
+                "Destination": "/var/atlassian/application-data/jira",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "bdde70bea83b",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "JVM_MINIMUM_MEMORY=1024m",
+                "JVM_MAXIMUM_MEMORY=4096m",
+                "affinity:container==8df2ffa01bc5444325eeccac811fd3a2ae3d1fb952c50d00d24eddfd93a6efe2",
+                "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "JAVA_HOME=/opt/java/openjdk",
+                "LANG=en_US.UTF-8",
+                "LANGUAGE=en_US:en",
+                "LC_ALL=en_US.UTF-8",
+                "JAVA_VERSION=jdk-11.0.21+9",
+                "APP_NAME=jira",
+                "RUN_USER=jira",
+                "RUN_GROUP=jira",
+                "RUN_UID=2001",
+                "RUN_GID=2001",
+                "JIRA_HOME=/var/atlassian/application-data/jira",
+                "JIRA_INSTALL_DIR=/opt/atlassian/jira",
+                "JIRA_VERSION=9.11.3"
+            ],
+            "Cmd": [
+                "/entrypoint.py"
+            ],
+            "Image": "atlassian/jira-software:latest",
+            "Volumes": {
+                "/var/atlassian/application-data/jira": {}
+            },
+            "WorkingDir": "/var/atlassian/application-data/jira",
+            "Entrypoint": [
+                "/usr/bin/tini",
+                "--"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "0fa571414c3341cfd10db7af3968428dee21bcf2214ff3a86232d94229f73dee",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "webinar",
+                "com.docker.compose.project.config_files": "docker-compose.yaml",
+                "com.docker.compose.project.working_dir": "/Users/shacharovadia/projects/webinar",
+                "com.docker.compose.service": "jira",
+                "com.docker.compose.version": "1.29.2",
+                "maintainer": "dc-deployments@atlassian.com",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.version": "22.04",
+                "securitytxt": "https://www.atlassian.com/.well-known/security.txt"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "6a6ece54eadc113f12aa1ad982aa9029234db2e2adb897d5a81e09d8b97a194d",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/6a6ece54eadc",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "webinar_jiranet": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "jira",
+                        "bdde70bea83b"
+                    ],
+                    "NetworkID": "b8542bab036aa49de124470d93d32d9eaf1eeffe2338e9901cba3a6b93b177f9",
+                    "EndpointID": "6adbaec1b50c55fef1580062789e15f6d401c5217af1583870b84347449ea9e2",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:14:00:02",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
