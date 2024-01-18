@@ -194,3 +194,23 @@ svg:not(:hover) {
     order: 0 !important;
     transition: all 1s;
 }
+
+@media screen and (min-width: 1728px) and (max-width: 1920px) {
+    .migration-map {
+        width: 15vw;
+        height: 28vh;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1728px) {
+    .migration-map {
+        width: 12vw;
+        height: 30vh;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .migration-map {
+        display: none;
+    }
+}

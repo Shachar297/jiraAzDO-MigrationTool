@@ -1,3 +1,3 @@
-MY_PAT=b7rutqvv2zzjbhgsl3nzws6nsangdsmpjpimzgru7wkdq35gzn5q
+MY_PAT=vdtq3rle36xe5agrx536jamc3gwttwcbexqk5sj6rpnij5eo4xxq
 
 printf "%s"":$MY_PAT" | base64
